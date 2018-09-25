@@ -207,7 +207,7 @@ namespace CruiseBit {
     /**
       * 红外线探测左、前、右是否有障碍物
       */
-    //% blockId="cruise_IR" block="%IRDire 有障碍物"
+    //% blockId="cruise_IR" block="%IRDire| 有障碍物"
     //% weight=68
     export function cruiseIR(IRDire:IRList): boolean {
         if(IRDire == IRList.front){
