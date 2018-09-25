@@ -9,7 +9,6 @@ namespace CruiseBit {
     //% blockId="cruise_motor" block="电机 左 速度%leftSpeed| 右 速度%rightSpeed| 时长%time 秒"
     //% leftSpeed.min=-1023 leftSpeed.max=1023
     //% rightSpeed.min=-1023 rightSpeed.max=1023
-    //% time.min=1
     //% weight=100
     export function motorRun(leftSpeed: number, rightSpeed: number, time: number): void {
         let leftRotation = 1;
@@ -31,6 +30,10 @@ namespace CruiseBit {
         pins.digitalWritePin(DigitalPin.P15, rightRotation);
 
         //添加时间控制
+        if(time < 0){
+            time = 0;
+        }
+        
         let time_num = time*1000000;
 
         control.waitMicros(time_num);
