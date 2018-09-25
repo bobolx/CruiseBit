@@ -211,27 +211,25 @@ namespace CruiseBit {
     //% weight=68
     export function cruiseIR(IRDire:IRList): boolean {
         if(IRDire == IRList.front){
-            if(pins.digitalReadPin(DigitalPin.P5) == 0){
+            if(pins.digitalReadPin(DigitalPin.P5) == 1){
                 return true;
             }else{
                 return false;
             }
-        }
-        
-        if(IRDire == IRList.left){
-            if(pins.digitalReadPin(DigitalPin.P2) == 0){
+        }else if(IRDire == IRList.left){
+            if(pins.digitalReadPin(DigitalPin.P2) == 1){
                 return true;
             }else{
                 return false;
             }
-        }
-
-        if(IRDire == IRList.right){
-            if(pins.digitalReadPin(DigitalPin.P8) == 0){
+        }else if(IRDire == IRList.right){
+            if(pins.digitalReadPin(DigitalPin.P8) == 1){
                 return true;
             }else{
                 return false;
             }
+        }else{
+            return false;
         }
     }
 
