@@ -103,7 +103,7 @@ enum ColorList {
 enum IRList {
     //% block="前方"
     front = 1,
-    //% block="左侧""
+    //% block="左侧"
     right = 2,
     //% block="右侧"
     left = 3,
@@ -130,7 +130,7 @@ namespace CruiseBit {
     /**
      * 设置电机
      */
-    //% blockId="cruise_motor" block="电机 左 速度%leftSpeed| 右 速度%rightSpeed 时长%time 秒"
+    //% blockId="cruise_motor" block="电机 左 速度%leftSpeed| 右 速度%rightSpeed| 时长%time 秒"
     //% leftSpeed.min=-1023 leftSpeed.max=1023
     //% rightSpeed.min=-1023 rightSpeed.max=1023
     //% weight=100
