@@ -112,20 +112,6 @@ enum IRList {
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace CruiseBit {
 
-    let neoStrip: neopixel.Strip;
-
-    /**
-     * Return a neo pixel strip.
-     */
-    //% blockId="cruise_neo" block="neo strip"
-    //% weight=5
-    export function neo(): neopixel.Strip {
-        if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB)
-        }
-
-        return neoStrip;
-    }
 
     /**
      * 设置电机
@@ -343,104 +329,6 @@ namespace CruiseBit {
                 return false;
             }
         }
-    }
-
-
-    //% blockId=cruise_rgb block="设置板载LED %RgbValue 颜色为 %ColorValue"
-    //% weight=59
-    export function setRGB(RgbValue: RgbList, ColorValue:ColorList): void {
-
-        if(ColorValue == ColorList.red){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Red));
-        }
-        
-        if(ColorValue == ColorList.orange){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Orange));
-        }
-        
-        if(ColorValue == ColorList.yellow){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Yellow));
-        }
-        
-        if(ColorValue == ColorList.green){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Green));
-        }
-        
-        if(ColorValue == ColorList.blue){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Blue));
-        }
-        
-        if(ColorValue == ColorList.indigo){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Indigo));
-        }
-        
-        if(ColorValue == ColorList.violet){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Violet));
-        }
-        
-        if(ColorValue == ColorList.purple){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Purple));
-        }
-        
-        if(ColorValue == ColorList.white){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.White));
-        }
-        
-        if(ColorValue == ColorList.black){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Black));
-        }
-        
-    }
-
-
-    /**
-      * Shows all LEDs to a given color (range 0-255 for r, g, b).
-      *
-      * @param rgb RGB color of the LED
-      */
-    //% blockId="cruise_neo_set_color" block="设置所有LED灯颜色为 %rgb=neopixel_colors"
-    //% weight=58
-    export function neoSetColor(rgb: number) {
-        neo().showColor(rgb);
-    }
-
-    /**
-     * Set LED to a given color (range 0-255 for r, g, b).
-     *
-     * @param offset position of the NeoPixel in the strip
-     * @param rgb RGB color of the LED
-     */
-    //% blockId="cruise_neo_set_pixel_color" block="设置LED灯 %offset|颜色为 %rgb=neopixel_colors"
-    //% weight=57
-    export function neoSetPixelColor(offset: number, rgb: number): void {
-        neo().setPixelColor(offset, rgb);
-    }
-
-    /**
-      * Show leds.
-      */
-    //% blockId="cruise_neo_show" block="所有LED灯亮"
-    //% weight=56
-    export function neoShow(): void {
-        neo().show();
-    }
-
-    /**
-      * Clear leds.
-      */
-    //% blockId="cruise_neo_clear" block="关闭所有LED灯"
-    //% weight=55
-    export function neoClear(): void {
-        neo().clear();
-    }
-
-    /**
-      * Shows a rainbow pattern on all LEDs.
-      */
-    //% blockId="cruise_neo_rainbow" block="LED彩虹"
-    //% weight=54
-    export function neoRainbow(): void {
-        neo().showRainbow(1, 360);
     }
 
 }
