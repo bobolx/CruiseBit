@@ -21,11 +21,12 @@ namespace CruiseBit {
         if(rightSpeed < 0){
             rightRotation = 0;
         }
-        
+        control.waitMicros(10);
        //左电机 M1
         pins.analogWritePin(AnalogPin.P14, Math.abs(leftSpeed));
         pins.digitalWritePin(DigitalPin.P13, leftRotation);
-        
+
+        control.waitMicros(10);
         //右电机 M2
         pins.analogWritePin(AnalogPin.P16, Math.abs(rightSpeed));
         pins.digitalWritePin(DigitalPin.P15, rightRotation);
@@ -38,9 +39,12 @@ namespace CruiseBit {
     //% weight=97
     //% blockId="cruise_stopAll" block="停止所有电机"
     export function motorStopAll(): void {
+        control.waitMicros(10);
         //左电机 M1
         pins.analogWritePin(AnalogPin.P14, 0);
         pins.digitalWritePin(DigitalPin.P13, 0);
+        
+        control.waitMicros(10);
         //右电机 M2
         pins.analogWritePin(AnalogPin.P16, 0);
         pins.digitalWritePin(DigitalPin.P15, 0);
