@@ -29,18 +29,21 @@ namespace CruiseBit {
         //右电机 M2
         pins.analogWritePin(AnalogPin.P16, Math.abs(rightSpeed));
         pins.digitalWritePin(DigitalPin.P15, rightRotation);
+        
+    }
 
-        //添加时间控制
-        // setTimeout(function(){
-        //     //左电机 M1
-        //     pins.analogWritePin(AnalogPin.P14, 0);
-        //     pins.digitalWritePin(DigitalPin.P13, 0);
-        //     //右电机 M2
-        //     pins.analogWritePin(AnalogPin.P16, 0);
-        //     pins.digitalWritePin(DigitalPin.P15, 0);
-        // },time*1000);
-        
-        
+    /**
+     * 停止所有电机
+     */
+    //% weight=97
+    //% blockId="cruise_stopAll" block="停止所有电机"
+    export function motorStopAll(): void {
+        //左电机 M1
+        pins.analogWritePin(AnalogPin.P14, 0);
+        pins.digitalWritePin(DigitalPin.P13, 0);
+        //右电机 M2
+        pins.analogWritePin(AnalogPin.P16, 0);
+        pins.digitalWritePin(DigitalPin.P15, 0);
     }
 
 
