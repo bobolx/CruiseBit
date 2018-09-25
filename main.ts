@@ -42,6 +42,15 @@ enum PingUnit {
     MicroSeconds
 }
 
+enum IRList {
+    //% block="前方"
+    front = 1,
+    //% block="左侧"
+    right = 2,
+    //% block="右侧"
+    left = 3
+}
+
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace CruiseBit {
 
@@ -191,6 +200,38 @@ namespace CruiseBit {
         switch (unit) {
             case PingUnit.Centimeters: return d / 42;
             default: return d ;
+        }
+    }
+
+
+    /**
+      * 红外线探测左、前、右是否有障碍物
+      */
+    //% blockId="cruise_IR" block="%IRDire 有障碍物"
+    //% weight=68
+    export function cruiseIR(IRDire:IRList): boolean {
+        if(IRDire == IRList.front){
+            if(pins.digitalReadPin(DigitalPin.P5) == 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        
+        if(IRDire == IRList.left){
+            if(pins.digitalReadPin(DigitalPin.P2) == 0){
+                return true;
+            }else{
+                return false;
+            }
+        }
+
+        if(IRDire == IRList.right){
+            if(pins.digitalReadPin(DigitalPin.P8) == 0){
+                return true;
+            }else{
+                return false;
+            }
         }
     }
 
