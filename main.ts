@@ -12,14 +12,14 @@ namespace CruiseBit {
     //% rightSpeed.min=-1023 rightSpeed.max=1023
     //% weight=100
     export function motorRun(leftSpeed: number, rightSpeed: number): void {
-        let leftRotation = 0x0;
+        let leftRotation = 0;
         if(leftSpeed < 0){
-            leftRotation = 0x1;
+            leftRotation = 1;
         }
 
-        let rightRotation = 0x0;
+        let rightRotation = 0;
         if(rightSpeed < 0){
-            rightRotation = 0x1;
+            rightRotation = 1;
         }
         
        //左电机 M1
