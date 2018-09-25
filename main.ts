@@ -35,6 +35,13 @@ enum Patrol{
     black_black = 4
 }
 
+enum PingUnit {
+    //% block="cm"
+    Centimeters,
+    //% block="μs"
+    MicroSeconds
+}
+
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace CruiseBit {
 
@@ -161,6 +168,29 @@ namespace CruiseBit {
             }
         }else{
             return true;
+        }
+    }
+
+    //% blockId=cruise_sensor block="超声波距离 %unit"
+    //% weight=69
+    export function sensorDistance(unit: PingUnit, maxCmDistance = 500): number {
+        // send pulse
+        pins.setPull(DigitalPin.P5, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P5, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(DigitalPin.P5, 1);
+        control.waitMicros(10);
+        pins.digitalWritePin(DigitalPin.P5, 0);
+        
+        // read pulse
+        let d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 42);
+        //console.log("Distance: " + d/42);
+        
+        basic.pause(50)
+
+        switch (unit) {
+            case PingUnit.Centimeters: return d / 42;
+            default: return d ;
         }
     }
 
