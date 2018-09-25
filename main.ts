@@ -141,7 +141,7 @@ namespace CruiseBit {
         pins.digitalWritePin(DigitalPin.P15, rightRotation);
 
         //添加时间控制
-        setTimeOut(function(){
+        setTimeout(function(){
             //左电机 M1
             pins.analogWritePin(AnalogPin.P14, 0);
             pins.digitalWritePin(DigitalPin.P13, 0);
