@@ -319,7 +319,7 @@ namespace CruiseBit {
       */
     //% blockId="cruise_IR" block="红外线探测 %IRDire 有障碍物"
     //% weight=68
-    export function cruiseIR(IRDire:IRList): void {
+    export function cruiseIR(IRDire:IRList): boolean {
         if(IRDire == IRList.front){
             if(pins.digitalReadPin(DigitalPin.P5) == 0){
                 return true;
