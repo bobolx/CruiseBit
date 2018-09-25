@@ -24,6 +24,17 @@ enum BeatList {
     breve_beat = 15
 }
 
+enum Patrol{
+    //% block="□□"
+    white_white = 1,
+    //% block="□■"
+    white_black = 2,
+    //% block="■□"
+    black_white = 3,
+    //% block="■■"
+    black_black = 4
+}
+
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace CruiseBit {
 
@@ -115,6 +126,42 @@ namespace CruiseBit {
         //     music.playTone(tone, music.beat(BeatFraction.SixTeenth));
 
         // }    
+    }
+
+    //% weight=79
+    //% blockId="cruise_patrol" block="巡线传感器 %patrol"
+    export function readPatrol(patrol:Patrol): boolean {
+
+        // let p1 = pins.digitalReadPin(DigitalPin.P12);
+        // let p2 = pins.digitalReadPin(DigitalPin.P11);
+
+        if(patrol == Patrol.white_white){
+            if(pins.digitalReadPin(DigitalPin.P12) == 0 && pins.digitalReadPin(DigitalPin.P11) == 0){
+                return true;
+            }else{
+                return false;
+            }
+        }else if(patrol == Patrol.white_black){
+            if(pins.digitalReadPin(DigitalPin.P12) == 1 && pins.digitalReadPin(DigitalPin.P11) == 0){
+                return true;
+            }else{
+                return false;
+            }
+        }else if(patrol == Patrol.black_white){
+            if(pins.digitalReadPin(DigitalPin.P12) == 0 && pins.digitalReadPin(DigitalPin.P11) == 1){
+                return true;
+            }else{
+                return false;
+            }
+        }else if(patrol == Patrol.black_black){
+            if(pins.digitalReadPin(DigitalPin.P12) == 1 && pins.digitalReadPin(DigitalPin.P11) == 1){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return true;
+        }
     }
 
 }
