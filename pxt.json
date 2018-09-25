@@ -1,7 +1,8 @@
 {
     "name": "CruiseBit",
     "dependencies": {
-        "core": "*"
+        "core": "*",
+        "neopixel": "github:microsoft/pxt-neopixel#v0.6.9"
     },
     "description": "克鲁斯教育机器人",
     "icon": "./cruise.png",
