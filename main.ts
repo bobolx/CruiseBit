@@ -292,7 +292,7 @@ namespace CruiseBit {
         }
     }
 
-    //% blockId=cruise_rgb block="设置板载LED %RgbValue 颜色为 %ColorValue"
+    //% blockId=cruise_rgb block="设置板载LED %RgbValue| 颜色为 %ColorValue"
     //% weight=59
     export function setRGB(RgbValue: RgbList, ColorValue:ColorList): void {
 
