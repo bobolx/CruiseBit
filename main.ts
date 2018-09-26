@@ -283,7 +283,7 @@ namespace CruiseBit {
     export function setRGB(RgbValue: RgbList, ColorValue:ColorList): void {
         
         // if(ColorValue == ColorList.red){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Red));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Yellow));
         // }
         
         // if(ColorValue == ColorList.orange){
@@ -321,6 +321,8 @@ namespace CruiseBit {
         // if(ColorValue == ColorList.black){
         //     neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Black));
         // }
+
+        neoStrip.show();
         
     }
 
