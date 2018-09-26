@@ -375,8 +375,7 @@ namespace CruiseBit {
    //% blockId="cruise_neo_clear" block="关闭所有LED灯"
    //% weight=55
    export function neoClear(): void {
-
-       neoStrip.clear();
+       neoStrip.showColor(neopixel.colors(NeoPixelColors.Black));
    }
 
     /**
