@@ -231,21 +231,24 @@ namespace CruiseBit {
     //% weight=69
     export function sensorDistance(unit: PingUnit, maxCmDistance = 500): number {
         // send pulse
-        pins.setPull(DigitalPin.P2, PinPullMode.PullNone);
+        // pins.setPull(DigitalPin.P2, PinPullMode.PullNone);
+        pins.setPull(DigitalPin.P2, PinPullMode.PullUp);
+        pins.setPull(DigitalPin.P5, PinPullMode.PullUp);
+
         pins.digitalWritePin(DigitalPin.P2, 0);
-        control.waitMicros(2);
+        control.waitMicros(4);
         pins.digitalWritePin(DigitalPin.P2, 1);
         control.waitMicros(10);
         pins.digitalWritePin(DigitalPin.P2, 0);
         
         // read pulse
-        let d = pins.pulseIn(DigitalPin.P5, PulseValue.High, maxCmDistance * 42);
-        //console.log("Distance: " + d/42);
+        let d = pins.pulseIn(DigitalPin.P5, PulseValue.High, maxCmDistance * 58);
+        //console.log("Distance: " + d/58);
         
         basic.pause(50)
 
         switch (unit) {
-            case PingUnit.Centimeters: return d / 42;
+            case PingUnit.Centimeters: return d / 58;
             default: return d ;
         }
     }
