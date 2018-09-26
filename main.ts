@@ -98,20 +98,7 @@ enum ColorList {
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace CruiseBit {
 
-    let neoStrip: neopixel.Strip;
-
-    // /**
-    //  * Return a neo pixel strip.
-    //  */
-    // //% blockId="cruise_neo" block="neo strip"
-    // //% weight=5
-    // export function neo(): neopixel.Strip {
-    //     if (!neoStrip) {
-    //         neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB)
-    //     }
-
-    //     return neoStrip;
-    // }
+    let neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
 
     /**
      * 设置电机
@@ -295,9 +282,6 @@ namespace CruiseBit {
     //% weight=59
     export function setRGB(RgbValue: RgbList, ColorValue:ColorList): void {
         
-        neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
-        
-        
         if(ColorValue == ColorList.red){
             neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Red));
         }
@@ -337,62 +321,9 @@ namespace CruiseBit {
         if(ColorValue == ColorList.black){
             neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Black));
         }
-        
-    }
-
-
-    /**
-      * Shows all LEDs to a given color (range 0-255 for r, g, b).
-      *
-      * @param rgb RGB color of the LED
-      */
-    //% blockId="cruise_neo_set_color" block="设置所有LED灯颜色为 %rgb=neopixel_colors"
-    //% weight=58
-    export function neoSetColor(rgb: number) {
-        
-         neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
-        
-        neoStrip.showColor(rgb);
-    }
-
-    /**
-     * Set LED to a given color (range 0-255 for r, g, b).
-     *
-     * @param offset position of the NeoPixel in the strip
-     * @param rgb RGB color of the LED
-     */
-    //% blockId="cruise_neo_set_pixel_color" block="设置LED灯 %offset|颜色为 %rgb=neopixel_colors"
-    //% weight=57
-    export function neoSetPixelColor(offset: number, rgb: number): void {
-        
-        neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
-        
-
-        neoStrip.setPixelColor(offset, rgb);
-    }
-
-    /**
-      * Show leds.
-      */
-    //% blockId="cruise_neo_show" block="所有LED灯亮"
-    //% weight=56
-    export function neoShow(): void {
-
-        neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
 
         neoStrip.show();
-    }
-
-    /**
-      * Clear leds.
-      */
-    //% blockId="cruise_neo_clear" block="关闭所有LED灯"
-    //% weight=55
-    export function neoClear(): void {
         
-        neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
-
-        neoStrip.clear();
     }
 
     /**
@@ -401,8 +332,6 @@ namespace CruiseBit {
     //% blockId="cruise_neo_rainbow" block="LED彩虹"
     //% weight=54
     export function neoRainbow(): void {
-        neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
-
         neoStrip.showRainbow(1, 360);
     }
 
