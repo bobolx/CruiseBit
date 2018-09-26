@@ -235,14 +235,14 @@ namespace CruiseBit {
         pins.setPull(DigitalPin.P2, PinPullMode.PullUp);
         pins.setPull(DigitalPin.P5, PinPullMode.PullUp);
 
-        pins.digitalWritePin(DigitalPin.P5, 0);
+        pins.digitalWritePin(DigitalPin.P2, 0);
         control.waitMicros(4);
-        pins.digitalWritePin(DigitalPin.P5, 1);
+        pins.digitalWritePin(DigitalPin.P2, 1);
         control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P5, 0);
+        pins.digitalWritePin(DigitalPin.P2, 0);
         
         // read pulse
-        let d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 58);
+        let d = pins.pulseIn(DigitalPin.P5, PulseValue.High, maxCmDistance * 58);
         //console.log("Distance: " + d/58);
         
         basic.pause(50)
