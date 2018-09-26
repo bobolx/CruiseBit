@@ -98,20 +98,22 @@ enum ColorList {
 //% weight=99 icon="\uf0e7" color=#1B80C4
 namespace CruiseBit {
 
-    let neoStrip: neopixel.Strip;
+    // let neoStrip: neopixel.Strip;
 
-    /**
-     * Return a neo pixel strip.
-     */
-    //% blockId="cruise_neo" block="neo strip"
-    //% weight=5
-    export function neo(): neopixel.Strip {
-        if (!neoStrip) {
-            neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB)
-        }
+    // /**
+    //  * Return a neo pixel strip.
+    //  */
+    // //% blockId="cruise_neo" block="neo strip"
+    // //% weight=5
+    // export function neo(): neopixel.Strip {
+    //     if (!neoStrip) {
+    //         neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB)
+    //     }
 
-        return neoStrip;
-    }
+    //     return neoStrip;
+    // }
+
+    var neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
 
 
     /**
@@ -243,15 +245,15 @@ namespace CruiseBit {
     //% weight=69
     export function sensorDistance(unit: PingUnit, maxCmDistance = 500): number {
         // send pulse
-        pins.setPull(DigitalPin.P5, PinPullMode.PullNone);
-        pins.digitalWritePin(DigitalPin.P5, 0);
+        pins.setPull(DigitalPin.P2, PinPullMode.PullNone);
+        pins.digitalWritePin(DigitalPin.P2, 0);
         control.waitMicros(2);
-        pins.digitalWritePin(DigitalPin.P5, 1);
+        pins.digitalWritePin(DigitalPin.P2, 1);
         control.waitMicros(10);
-        pins.digitalWritePin(DigitalPin.P5, 0);
+        pins.digitalWritePin(DigitalPin.P2, 0);
         
         // read pulse
-        let d = pins.pulseIn(DigitalPin.P2, PulseValue.High, maxCmDistance * 42);
+        let d = pins.pulseIn(DigitalPin.P5, PulseValue.High, maxCmDistance * 42);
         //console.log("Distance: " + d/42);
         
         basic.pause(50)
@@ -295,45 +297,48 @@ namespace CruiseBit {
     //% blockId=cruise_rgb block="设置板载LED %RgbValue| 颜色为 %ColorValue"
     //% weight=59
     export function setRGB(RgbValue: RgbList, ColorValue:ColorList): void {
-
+        if(!neoStrip){
+            neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
+        }
+        
         if(ColorValue == ColorList.red){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Red));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Red));
         }
         
         if(ColorValue == ColorList.orange){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Orange));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Orange));
         }
         
         if(ColorValue == ColorList.yellow){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Yellow));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Yellow));
         }
         
         if(ColorValue == ColorList.green){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Green));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Green));
         }
         
         if(ColorValue == ColorList.blue){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Blue));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Blue));
         }
         
         if(ColorValue == ColorList.indigo){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Indigo));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Indigo));
         }
         
         if(ColorValue == ColorList.violet){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Violet));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Violet));
         }
         
         if(ColorValue == ColorList.purple){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Purple));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Purple));
         }
         
         if(ColorValue == ColorList.white){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.White));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.White));
         }
         
         if(ColorValue == ColorList.black){
-            neo().setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Black));
+            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Black));
         }
         
     }
@@ -347,7 +352,11 @@ namespace CruiseBit {
     //% blockId="cruise_neo_set_color" block="设置所有LED灯颜色为 %rgb=neopixel_colors"
     //% weight=58
     export function neoSetColor(rgb: number) {
-        neo().showColor(rgb);
+        if(!neoStrip){
+            neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
+        }
+
+        neoStrip.showColor(rgb);
     }
 
     /**
@@ -359,7 +368,11 @@ namespace CruiseBit {
     //% blockId="cruise_neo_set_pixel_color" block="设置LED灯 %offset|颜色为 %rgb=neopixel_colors"
     //% weight=57
     export function neoSetPixelColor(offset: number, rgb: number): void {
-        neo().setPixelColor(offset, rgb);
+        if(!neoStrip){
+            neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
+        }
+
+        neoStrip.setPixelColor(offset, rgb);
     }
 
     /**
@@ -368,7 +381,11 @@ namespace CruiseBit {
     //% blockId="cruise_neo_show" block="所有LED灯亮"
     //% weight=56
     export function neoShow(): void {
-        neo().show();
+        if(!neoStrip){
+            neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
+        }
+
+        neoStrip.show();
     }
 
     /**
@@ -377,7 +394,11 @@ namespace CruiseBit {
     //% blockId="cruise_neo_clear" block="关闭所有LED灯"
     //% weight=55
     export function neoClear(): void {
-        neo().clear();
+        if(!neoStrip){
+            neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
+        }
+
+        neoStrip.clear();
     }
 
     /**
@@ -386,7 +407,11 @@ namespace CruiseBit {
     //% blockId="cruise_neo_rainbow" block="LED彩虹"
     //% weight=54
     export function neoRainbow(): void {
-        neo().showRainbow(1, 360);
+        if(!neoStrip){
+            neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
+        }
+        
+        neoStrip.showRainbow(1, 360);
     }
 
 }
