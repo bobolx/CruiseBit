@@ -52,6 +52,8 @@ enum IRList {
 }
 
 enum RgbList {
+    //% block="全部"
+    rgb = 9,
     //% block="灯1"
     rgb1 = 0,
     //% block="灯2"
@@ -283,54 +285,105 @@ namespace CruiseBit {
     export function setRGB(RgbValue: RgbList, ColorValue:ColorList): void {
         
         if(ColorValue == ColorList.red){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Red));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.Red));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Red));
+            }
+            
         }
         
         if(ColorValue == ColorList.orange){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Orange));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.Orange));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Orange));
+            }
         }
         
         if(ColorValue == ColorList.yellow){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Yellow));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.Yellow));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Yellow));
+            }
         }
         
         if(ColorValue == ColorList.green){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Green));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.Green));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Green));
+            }
         }
         
         if(ColorValue == ColorList.blue){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Blue));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.Blue));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Blue));
+            }
         }
         
         if(ColorValue == ColorList.indigo){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Indigo));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.Indigo));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Indigo));
+            }
         }
         
         if(ColorValue == ColorList.violet){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Violet));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.Violet));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Violet));
+            }
         }
         
         if(ColorValue == ColorList.purple){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Purple));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.Purple));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Purple));
+            }
         }
         
         if(ColorValue == ColorList.white){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.White));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.White));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.White));
+            }
         }
         
         if(ColorValue == ColorList.black){
-            neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Black));
+            if(RgbValue == RgbList.rgb){
+                neoStrip.showColor(neopixel.colors(NeoPixelColors.Black));
+            }else{
+                neoStrip.setPixelColor(RgbValue, neopixel.colors(NeoPixelColors.Black));
+            }
         }
 
         neoStrip.show();
         
     }
 
+   /**
+     * Clear leds.
+     */
+   //% blockId="cruise_neo_clear" block="关闭所有LED灯"
+   //% weight=55
+   export function neoClear(): void {
+
+       neoStrip.clear();
+   }
+
     /**
       * Shows a rainbow pattern on all LEDs.
       */
-    //% blockId="cruise_neo_rainbow" block="LED彩虹"
-    //% weight=54
+    //% blockId="cruise_neo_rainbow" block="彩虹灯"
+    //% weight=56
     export function neoRainbow(): void {
         neoStrip.showRainbow(1, 360);
     }
