@@ -103,13 +103,13 @@ namespace CruiseBit {
     let neoStrip = neopixel.create(DigitalPin.P1, 9, NeoPixelMode.RGB);
 
     /**
-     * 设置电机有时长限制
+     * 设置电机
      */
-    //% blockId="cruise_motor_time" block="电机 左 速度%leftSpeed| 右 速度%rightSpeed| 时长%time 秒"
+    //% blockId="cruise_motor" block="电机 左 速度%leftSpeed| 右 速度%rightSpeed| 时长%time 秒"
     //% leftSpeed.min=-1023 leftSpeed.max=1023
     //% rightSpeed.min=-1023 rightSpeed.max=1023
     //% weight=100
-    export function motorRunTime(leftSpeed: number, rightSpeed: number, time: number): void {
+    export function motorRun(leftSpeed: number, rightSpeed: number, time: number): void {
         let leftRotation = 1;
         if(leftSpeed < 0){
             leftRotation = 0;
@@ -146,6 +146,8 @@ namespace CruiseBit {
         
         
     }
+
+    
 
     /**
      * 播放音调
