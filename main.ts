@@ -147,7 +147,33 @@ namespace CruiseBit {
         
     }
 
-    
+    /**
+     * 设置电机持续运动
+     */
+    //% blockId="cruise_go" block="电机 左 速度%lSpeed| 右 速度%rSpeed"
+    //% lSpeed.min=-1023 lSpeed.max=1023
+    //% rSpeed.min=-1023 rSpeed.max=1023
+    //% weight=99
+    export function motorGo(lSpeed: number, rSpeed: number): void {
+        let leftDirection = 1;
+        if(lSpeed < 0){
+            leftDirection = 0;
+        }
+
+        let rightDirection = 1;
+        if(rSpeed < 0){
+            rightDirection = 0;
+        }
+        
+       //左电机 M1
+        pins.analogWritePin(AnalogPin.P14, Math.abs(lSpeed));
+        pins.digitalWritePin(DigitalPin.P13, leftDirection);
+
+        //右电机 M2
+        pins.analogWritePin(AnalogPin.P16, Math.abs(rSpeed));
+        pins.digitalWritePin(DigitalPin.P15, rightDirection);
+        
+    }
 
     /**
      * 播放音调
